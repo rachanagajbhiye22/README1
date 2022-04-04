@@ -1,0 +1,52 @@
+package pom;
+
+import java.io.IOException;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import newtopic.confugaration;
+
+public class utilRun {
+	public static void main(String[] args) throws  IOException, InterruptedException {
+		System.setProperty("webdriver.chrome.driver" , confugaration.driverpath);
+		WebDriver driver = new ChromeDriver();
+		driver.get(confugaration.appurl);
+		driver.manage().window().maximize();
+		
+		utilstart ss= new utilstart (driver);
+		utility util =new utility();
+		
+		
+		//tc01
+		ss.entrfstnm(util.readExcelData(2, 0));
+	    ss.entrlstnm(util.readExcelData(2,1));
+	    ss.entremail(util.readExcelData(2,2));
+		ss.entrpass(util.readExcelData(2,3));
+		ss.confpass(util.readExcelData(2,4));
+		ss.selectday(util.readExcelData(2,5));
+		ss.selectMonth(util.readExcelData(2,6));
+		ss.selectyear(util.readExcelData(2,7));
+		ss.ckrd();
+		ss.clksub();
+		
+		Thread.sleep(2000);
+		driver.navigate().refresh();
+		
+		//tc02
+		ss.entrfstnm(util.readExcelData(3, 0));
+	    ss.entrlstnm(util.readExcelData(3,1));
+	    ss.entremail(util.readExcelData(3,2));
+		ss.entrpass(util.readExcelData(3,3));
+		ss.confpass(util.readExcelData(3,4));
+		ss.selectday(util.readExcelData(3,5));
+		ss.selectMonth(util.readExcelData(3,6));
+		ss.selectyear(util.readExcelData(3,7));
+		ss.ckrd();
+		ss.clksub();
+		
+		
+	}
+
+}
